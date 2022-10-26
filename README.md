@@ -1,7 +1,7 @@
 # Kafka Producer Consumer UI
 
 I created this service and the two HTML files as part of hack week. The purpose of this service is to publish and consume 
-kafka messages from a web-based UI. Currently, the service runs on port 8080, and consumes from `localhost:9092`. 
+kafka messages from a web-based UI. Currently, the service runs on localhost:8080, and consumes from `localhost:9092`. I might try to deploy it to the cloud. 
 
 
 ## How to use the service
