@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+
+       <div id="main-div">
+            <div id="topic-div">
+                <h5>Kafka Topic</h5>
+                <input type="text", id="text-box-topic">
+            </div>
+            <div id="message-div">
+                <h5>Message</h5>
+                <textarea type="text", id="text-box"></textarea>
+            </div>
+            <div id="button-div">
+                <input id="send-button" type="submit" value="Start" onclick="submit()">
+            </div>
+       </div>
+        
+        
+        
+        <script type="text/javascript">
+
+            const invalidTopicMsg = "topic does not exist in service - please add to application.properties";
+
+            function submit() {
+                var xhr = new XMLHttpRequest();
+                console.log(document.getElementById('text-box').value)
+                var bodyRaw = {
+                    "input": document.getElementById('text-box').value,
+                    "topic": document.getElementById('text-box-topic').value
+                }
+                var recentResponse = ""; 
+                xhr.onreadystatechange = function () {
+                    if (xhr.response === invalidTopicMsg) {
+                        alert(invalidTopicMsg)
+                    }    
+                    else if (recentResponse !== xhr.response) {
+                        alert("message published!")
+                        recentResponse = xhr.response
+                        document.getElementById("text-box").value = "";
+                    } 
+                    else {
+                        console.log("already alerted for this msg")
+                    } 
+                }
+                var body = JSON.stringify(bodyRaw); 
+                xhr.open('POST', 'http://localhost:8080/submit', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                console.log(bodyRaw)
+                console.log(body)
+                xhr.send(body);
+            }
+        </script>
+    </body>
+</html>
