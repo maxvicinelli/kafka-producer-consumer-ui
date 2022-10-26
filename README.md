@@ -6,7 +6,7 @@ kafka messages from a web-based UI. Currently, the service runs on port 8080, an
 
 ## How to use the service
 
-To run, simply run the main service file `MaxMessagingServiceApplication`. Add the Kafka topics you want to publish to / consume from in `src/main/java/resources/application.properties`. 
+Run the main service file `MaxMessagingServiceApplication`. Add the Kafka topics you want to publish to / consume from in `src/main/java/resources/application.properties`. 
 
 ### Publishing Messages
 
